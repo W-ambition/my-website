@@ -38,7 +38,7 @@ const Login = (props) => {
     if(result.data.data === '登录成功') {
       localStorage.setItem('openId', result.data.openId)
       setIsLoading(false)
-      props.history.push('/')
+      props.history.push('/index')
     }else {
       message.error('用户名或密码错误')
       CloseLoading()

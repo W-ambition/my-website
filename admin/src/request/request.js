@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { withRouter } from 'react-router-dom'
 import { baseURL } from '../config/apiUrl'
 const instance = axios.create({
   baseURL,
@@ -11,9 +12,14 @@ instance.interceptors.request.use(config => {
 })
 
 instance.interceptors.response.use(response => {
+  // if(response.data.data === '没有登录') {
+  //   localStorage.removeItem('openId')
+  //   console.log(this)
+  // }
+  // console.log(this)
   return response;
 }, error => {
   return Promise.reject(error)
 })
 
-export default instance;
+export default withRouter(instance);
